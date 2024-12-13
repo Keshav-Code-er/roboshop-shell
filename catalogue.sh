@@ -32,11 +32,7 @@ VALIDATE $? "Install NodeJS"
 
 useradd roboshop &>>$LOGFILE
 
-
-
 mkdir /app &>>$LOGFILE
-
-
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>>$LOGFILE
 
