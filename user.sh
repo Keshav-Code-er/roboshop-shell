@@ -95,6 +95,13 @@ dnf install mongodb-org-shell -y &>>$LOGFILE
 
 VALIDATE $? " install mongodb-client"
 
-mongo --host mongodb.roboshop.online /app/schema/user.js &>>$LOGFILE
+SCHEMA_EXISTS=$(mongosh --host $MONGO_HOST --quiet --eval "db.getMongo().getDBNames().indexOf('users')") &>> $LOGFILE
 
-VALIDATE $? "Load Schema"
+if [ $SCHEMA_EXISTS -lt 0 ]
+then
+    echo "Schema does not exists ... LOADING"
+    mongosh --host $MONGO_HOST </app/schema/user.js &>> $LOGFILE
+    VALIDATE $? "Loading user data"
+else
+    echo -e "schema already exists... $Y SKIPPING $N"
+fi
