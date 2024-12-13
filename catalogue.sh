@@ -30,20 +30,9 @@ dnf install nodejs -y &>>$LOGFILE
 
 VALIDATE $? "Install NodeJS"
 
-id roboshop &>> $LOGFILE
-if [ $? -ne 0 ]
-then
-    useradd roboshop &>> $LOGFILE
-    VALIDATE $? "Adding roboshop user"
-else
-    echo -e "roboshop user already exist...$Y SKIPPING $N"
-fi
+useradd roboshop &>>$LOGFILE
 
-rm -rf /app &>> $LOGFILE
-VALIDATE $? "clean up existing directory"
-
-
-# mkdir /app &>>$LOGFILE
+mkdir /app &>>$LOGFILE
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>>$LOGFILE
 
