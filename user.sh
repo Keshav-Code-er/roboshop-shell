@@ -95,6 +95,6 @@ dnf install mongodb-org-shell -y &>>$LOGFILE
 
 VALIDATE $? " install mongodb-client"
 
-mongo --host mongodb.roboshop.online </app/schema/user.js &>>$LOGFILE
+mongo --host mongodb.roboshop.online /app/schema/user.js &>>$LOGFILE
 
 VALIDATE $? "Load Schema"
