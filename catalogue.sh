@@ -54,6 +54,7 @@ npm install &>>$LOGFILE
 
 VALIDATE $? "Install NodeJS"
 
+#Give the full path of catalogue.service because we inside the /app
 cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>>$LOGFILE
 
 VALIDATE $? "Setup SystemD Catalogue Service"
@@ -74,7 +75,7 @@ systemctl start catalogue &>>$LOGFILE
 
 VALIDATE $? "Install NodeJS"
 
-cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo &>>$LOGFILE
+cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo  &>>$LOGFILE
 
 VALIDATE $? "setup MongoDB repo "
 
