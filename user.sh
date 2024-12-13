@@ -43,7 +43,8 @@ rm -rf /app &>> $LOGFILE
 VALIDATE $? "clean up existing directory"
 
 
-# mkdir /app &>>$LOGFILE
+mkdir -p /app &>> $LOGFILE
+VALIDATE $? "Creating app directory"
 
 curl -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip &>>$LOGFILE
 
