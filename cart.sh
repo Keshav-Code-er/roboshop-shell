@@ -69,9 +69,10 @@ VALIDATE $? "Start the service"
 
 systemctl daemon-reload &>>$LOGFILE
 
-VALIDATE $? "daemon-reload"
+VALIDATE $? "Install NodeJS"
 
 systemctl start cart &>>$LOGFILE
 
-VALIDATE $? "start cart"
+VALIDATE $? "Install NodeJS"
+
 
