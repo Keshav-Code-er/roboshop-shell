@@ -48,8 +48,8 @@ VALIDATE $? "Start Rabbitmq"
 
 rabbitmqctl add_user roboshop roboshop123 &>>$LOGFILE
 
-VALIDATE $? "Unzip Payment"
+VALIDATE $? "Unzip Rabbitmq"
 
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>$LOGFILE
 
-VALIDATE $? "Unzip Payment"
+VALIDATE $? "Unzip Rabbitmq"

@@ -38,13 +38,13 @@ curl -L -o /tmp/payment.zip https://roboshop-builds.s3.amazonaws.com/payment.zip
 
 VALIDATE $? "Download the application Artifact"
 
-unzip /tmp/payment.zip &>>$LOGFILE
-
-VALIDATE $? "Unzip Payment"
-
 cd /app &>>$LOGFILE
 
 VALIDATE $? "move app directory"
+
+unzip /tmp/payment.zip &>>$LOGFILE
+
+VALIDATE $? "Unzip Payment"
 
 pip3.6 install -r requirements.txt &>>$LOGFILE
 
