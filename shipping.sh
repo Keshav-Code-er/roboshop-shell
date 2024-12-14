@@ -74,7 +74,7 @@ dnf install mysql -y &>>$LOGFILE
 
 VALIDATE $? "Install mysql"
 
-mysql -h -pRoboShop@1 <MYSQL-SERVER-IPADDRESS >-uroot </app/schema/shipping.sql &>>$LOGFILE
+mysql -h  <MYSQL-SERVER-IPADDRESS >-uroot </app/schema/shipping.sql &>>$LOGFILE
 
 VALIDATE $? "Load Schema"
 
