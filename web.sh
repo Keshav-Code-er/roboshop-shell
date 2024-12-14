@@ -27,20 +27,38 @@ VALIDATE() {
 }
 
 
-dnf install nginx -y
+dnf install nginx -y  &>>$LOGFILE
 
-systemctl enable nginx
+VALIDATE $? "Install Nginx"
 
-systemctl start nginx
+systemctl enable nginx  &>>$LOGFILE
 
-rm -rf /usr/share/nginx/html/*
+VALIDATE $? "Enable Nginx"
 
-curl -o /tmp/web.zip https://roboshop-builds.s3.amazonaws.com/web.zip
+systemctl start nginx  &>>$LOGFILE
 
-cd /usr/share/nginx/html
+VALIDATE $? "Start Nginx"
 
-unzip /tmp/web.zip
+rm -rf /usr/share/nginx/html/*  &>>$LOGFILE
 
-cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf
+VALIDATE $? "Remove Nginx default index"
 
-systemctl restart nginx 
+curl -o /tmp/web.zip https://roboshop-builds.s3.amazonaws.com/web.zip  &>>$LOGFILE
+
+VALIDATE $? "Donloading"
+
+cd /usr/share/nginx/html  &>>$LOGFILE
+
+VALIDATE $? "Move to Folder"
+
+unzip /tmp/web.zip  &>>$LOGFILE
+
+VALIDATE $? "Unzip the File"
+
+cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf  &>>$LOGFILE
+
+VALIDATE $? "Configuration"
+
+systemctl restart nginx  &>>$LOGFILE
+
+VALIDATE $? "Restart Nginx"
