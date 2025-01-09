@@ -1,6 +1,6 @@
 #/bin/bash
 
-NAME=$@
+NAME=$@ # taking the argument from cmd line
 INSTANCE_TYPE="t2.micro"
 IMAGE_ID=ami-0b4f379183e5706b9
 SECURITY_GROUP_ID=sg-097e3f743552a558f
