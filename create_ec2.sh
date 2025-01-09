@@ -1,6 +1,6 @@
 #/bin/bash
 
-NAME=("node05" "node06")
+NAME=("node07" "node08")
 INSTANCE_TYPE="t2.micro"
 IMAGE_ID=ami-0b4f379183e5706b9
 SECURITY_GROUP_ID=sg-097e3f743552a558f
@@ -18,7 +18,7 @@ for i in "${NAME[@]}"; do
                         "ResourceRecordSet": {
                                     "Name": "'$i.$DOMAIN_NAME'",
                                     "Type": "A",
-                                    "TTL": 1,
+                                    "TTL": 300,
                                  "ResourceRecords": [{ "Value": "'$IP_ADDRESS'"}]
     }}]
     }
